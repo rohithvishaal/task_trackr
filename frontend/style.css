@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap');
+
+/* Basic styling and global reset */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Mozilla Text", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body {
+    background: linear-gradient(to left, #3f2b96, #a8c0ff);
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    all: unset;
+    /* Removes all default button styling */
+    cursor: pointer;
+}
+
+/* --- Container for the whole application --- */
+.container {
+    width: 100%;
+    position: relative;
+    background-color: #fffcfc;
+    padding: 24px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.container h2 {
+    text-align: center;
+}
+
+.card {
+    padding: 1.5rem;
+    width: 100%;
+    display: grid;
+    /* This grid property is key for responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    column-gap: 1rem;
+    row-gap: 1rem;
+
+}
+
+/* --- Task Item Styling --- */
+
+.task-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.task-todo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-grow: 1;
+    min-width: 0;
+    /* Prevents overflow with long text */
+}
+
+.task-checkbox {
+    flex-shrink: 0;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.task-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.card-text {
+    font-size: 1em;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 12rem;
+}
+
+.checked {
+    text-decoration: line-through;
+    text-decoration-thickness: 0.1rem;
+    color: #4b5563;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.edit-button,
+.trash-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-button svg,
+.trash-button svg {
+    width: 26px;
+    height: 26px;
+    transition: transform 0.2s ease;
+}
+
+.edit-button:hover,
+.trash-button:hover {
+    transform: scale(1.1);
+}
+
+/* --- Modal styling --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 420px;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.open .modal-card {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+}
+
+.close-btn {
+    color: #9ca3af;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.close-btn:hover {
+    color: #4b5563;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+}
+
+.task-content textarea,
+input {
+    max-width: 12rem;
+    resize: none;
+}
+
+.card-title textarea {
+    resize: none;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #f5a623;
+    box-shadow: 0 0 0 1px #f5a623;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    gap: 0.75rem;
+}
+
+.btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary {
+    color: #374151;
+    background-color: #e5e7eb;
+}
+
+.btn-secondary:hover {
+    background-color: #d1d5db;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #f5a623;
+}
+
+.btn-primary:hover {
+    background-color: #e0941e;
+}
+
+/* --- Create Task Button --- */
+#create-task {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    background-color: #f5a623;
+    border-radius: 9999px;
+    width: 62px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#create-task:hover {
+    transform: scale(1.1);
+}
+
+#create-task:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.5);
+}
+
+#create-task svg {
+    width: 32px;
+    height: 32px;
+    stroke: white;
+}
+
+/* --- Media Queries for Mobile Screens --- */
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+        padding-bottom: 80px;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    .card {
+        padding: 0;
+        /* Force single column layout */
+        grid-template-columns: 1fr;
+    }
+
+    .task-container {
+        flex-direction: column;
+        /* Stacks items vertically on small screens */
+        align-items: flex-start;
+        /* Aligns content to the left */
+        padding: 10px;
+    }
+
+    .task-todo {
+        width: 100%;
+        gap: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .task-content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .card-title {
+        font-size: 1.1em;
+    }
+
+    .card-text {
+        font-size: 0.9em;
+    }
+
+    .options {
+        width: 100%;
+        justify-content: flex-end;
+        /* Pushes buttons to the right */
+        gap: 8px;
+    }
+
+    .edit-button svg,
+    .trash-button svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    #create-task {
+        width: 50px;
+        height: 50px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .task-content textarea,
+    input {
+        max-width: 12rem;
+        resize: none;
+    }
+}

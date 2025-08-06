@@ -57,7 +57,7 @@ Create Task
 Completed Tasks
 ![alt text](<screenshots/ss  (2).png>)  
 In place task edit
-![alt text](<screenshots/ss  (1).png>)  
+![alt text](<screenshots/ss  (1).png>)    
 Mobile View
 ![alt text](<screenshots/ss  (5).png>)  
 

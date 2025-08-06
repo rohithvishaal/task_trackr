@@ -50,13 +50,14 @@ Start the server
 
 
 ## Screenshots
-![alt text](<screenshots/ss  (3).png>)
 Web View
-![alt text](image.png)
+![alt text](<screenshots/ss  (3).png>)  
 Create Task
-![alt text](<screenshots/ss  (2).png>)
+![alt text](<screenshots/ss  (4).png>)
 Completed Tasks
-![alt text](<screenshots/ss  (1).png>)
+![alt text](<screenshots/ss  (2).png>)  
 In place task edit
-![alt text](<screenshots/ss  (5).png>)
+![alt text](<screenshots/ss  (1).png>)  
 Mobile View
+![alt text](<screenshots/ss  (5).png>)  
+

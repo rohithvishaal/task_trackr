@@ -33,7 +33,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd task_trackr
 ```
 
 Install dependencies
@@ -58,6 +58,6 @@ Completed Tasks
 ![alt text](<screenshots/ss  (2).png>)  
 In place task edit
 ![alt text](<screenshots/ss  (1).png>)    
-Mobile View
+Mobile View  
 ![alt text](<screenshots/ss  (5).png>)  
 

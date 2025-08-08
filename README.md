@@ -39,6 +39,7 @@ Go to the project directory
 Install dependencies
 
 ```bash
+  cd backend
   npm install
 ```
 
